@@ -15,10 +15,6 @@ import { getSingleContent, getMultipleContent, closeIconClickEffect } from './ut
 export default defineComponent({
   name: 'TCascaderNew',
 
-  components: {
-    Panel,
-  },
-
   props: { ...props, haveInput: Boolean },
 
   setup(props, { slots }) {
@@ -38,7 +34,6 @@ export default defineComponent({
 
       const closeIconClick = (context: { e: MouseEvent }) => {
         context.e.stopPropagation();
-
         closeIconClickEffect(cascaderContext.value);
       };
 
@@ -67,9 +62,9 @@ export default defineComponent({
         }}
         v-slots={{
           panel: () => (
-            <panel empty={props.empty} trigger={props.trigger} cascaderContext={cascaderContext.value}>
+            <Panel empty={props.empty} trigger={props.trigger} cascaderContext={cascaderContext.value}>
               {{ empty: slots.empty }}
-            </panel>
+            </Panel>
           ),
           suffixIcon: () => renderSuffixIcon(),
         }}
