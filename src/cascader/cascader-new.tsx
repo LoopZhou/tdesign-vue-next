@@ -19,6 +19,7 @@ export default defineComponent({
 
   setup(props, { slots }) {
     const COMPONENT_NAME = usePrefixClass('cascader');
+    const overlayClassName = usePrefixClass('cascader__popup');
     const { cascaderContext, setInnerValue } = useCascaderContext(props);
 
     const inputVal = computed(() => {
@@ -60,6 +61,7 @@ export default defineComponent({
             source: 'clear',
           });
         }}
+        overlayClassName={overlayClassName.value}
         v-slots={{
           panel: () => (
             <Panel empty={props.empty} trigger={props.trigger} cascaderContext={cascaderContext.value}>
